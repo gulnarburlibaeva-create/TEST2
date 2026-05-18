@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="kk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Студенттік бақылау тесті · Контрольный тест</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Серверсіз: index.html файлын екі рет шерту жеткілікті. data/, js/, css/ қалталары осы файлмен бірге болуы керек. -->
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <!-- Дайындық -->
+    <section id="screen-start" class="screen is-active" aria-labelledby="prep-heading">
+      <span class="page-title"
+        >Тестке дайындық<span class="title__ru" lang="ru">Подготовка к тесту</span></span
+      >
+      <div class="prep-wrap">
+        <div class="prep-hero">
+          <h1 id="prep-heading" class="h1-bilingual">
+            Студенттік бақылау тесті
+            <span class="h1__ru" lang="ru">Студенческий контрольный тест</span>
+          </h1>
+          <p class="lead lead-bilingual">
+            <span class="lead__kk"
+              >Біліміңізді тексеріп, нәтижеңізді көріңіз. Бастамас бұрын өз мәліметтеріңізді енгізіңіз.</span
+            >
+            <span class="lead__ru" lang="ru"
+              >Проверьте свои знания и посмотрите результат. Перед началом введите свои данные.</span
+            >
+          </p>
+          <div class="rules-card">
+            <h2>Ережелер<span class="rules__ru" lang="ru">Правила</span></h2>
+            <div class="rule-row">
+              <div class="rule-icon" aria-hidden="true">30</div>
+              <div>
+                <strong>30 сұрақ</strong>
+                <span>Барлығы 300 сұрақ базасынан кездейсоқ таңдалады.</span>
+                <span class="rule__ru" lang="ru"
+                  >30 вопросов, случайно из базы из 300 вопросов.</span
+                >
+              </div>
+            </div>
+            <div class="rule-row">
+              <div class="rule-icon" aria-hidden="true">40</div>
+              <div>
+                <strong>40 минут</strong>
+                <span>Уақыт біткенде тест автоматты түрде аяқталады.</span>
+                <span class="rule__ru" lang="ru"
+                  >По истечении времени тест завершится автоматически.</span
+                >
+              </div>
+            </div>
+            <div class="rule-row">
+              <div class="rule-icon" aria-hidden="true">!</div>
+              <div>
+                <strong>Жауапты өзгерту мүмкін емес</strong>
+                <span>Әр сұраққа мұқият жауап беріңіз.</span>
+                <span class="rule__ru" lang="ru"
+                  >Нельзя изменить ответ. Отвечайте на каждый вопрос внимательно.</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-card">
+          <div id="bank-error" class="bank-error" hidden role="alert">
+            <strong>Сұрақтар жүктелмеді</strong>
+            <span lang="ru">Вопросы не загружены.</span>
+            <p class="bank-error__detail">
+              <code>data/questions.js</code> файлы табылмады немесе бос. Оны <code>index.html</code> қалтасындағы
+              <code>data</code> қалтасына салыңыз да, бетті жаңартыңыз.
+              <span lang="ru"
+                >Положите <code>data/questions.js</code> рядом с <code>index.html</code> и обновите страницу.</span
+              >
+            </p>
+          </div>
+          <h2>
+            Мәліметтерді енгізіңіз
+            <span class="form__ru" lang="ru">Введите данные</span>
+          </h2>
+          <form id="form-start" novalidate>
+            <div class="field" id="field-name">
+              <label for="input-name" class="bilabel">
+                <span class="bilabel__kk">Толық аты-жөні</span>
+                <span class="bilabel__ru" lang="ru">ФИО (полностью)</span>
+              </label>
+              <input
+                id="input-name"
+                name="name"
+                type="text"
+                autocomplete="name"
+                placeholder="Мысалы: Серік Ә. Әзаматұлы / Иванов Иван Иванович"
+                maxlength="120"
+                required
+              />
+              <span class="error-msg"
+                >Аты-жөнін енгізіңіз. <span lang="ru">Введите ФИО.</span></span
+              >
+            </div>
+            <div class="field" id="field-specialty">
+              <label for="select-specialty" class="bilabel">
+                <span class="bilabel__kk">Мамандық</span>
+                <span class="bilabel__ru" lang="ru">Специальность</span>
+              </label>
+              <select id="select-specialty" name="specialty" required>
+                <option value="" disabled selected>Мамандықты таңдаңыз / Выберите специальность</option>
+              </select>
+              <span class="error-msg"
+                >Мамандықты таңдаңыз. <span lang="ru">Выберите специальность.</span></span
+              >
+            </div>
+            <div class="field" id="field-group">
+              <label for="select-group" class="bilabel">
+                <span class="bilabel__kk">Топ</span>
+                <span class="bilabel__ru" lang="ru">Группа</span>
+              </label>
+              <select id="select-group" name="group" required>
+                <option value="" disabled selected>Топты таңдаңыз / Выберите группу</option>
+              </select>
+              <span class="error-msg">Топты таңдаңыз. <span lang="ru">Выберите группу.</span></span>
+            </div>
+            <button type="submit" class="btn-primary" id="btn-start">
+              Тестті бастау <span class="btn-inline-ru" lang="ru">Начать тест</span>
+            </button>
+          </form>
+        </div>
+      </div>
+      <details class="teacher-panel">
+        <summary class="teacher-panel__summary">
+          Мұғалімге · Нәтижелер тарихы
+          <span class="teacher-panel__summary-ru" lang="ru">Преподавателю · история результатов</span>
+        </summary>
+        <div class="teacher-panel__body">
+          <p class="teacher-panel__hint">
+            Тест аяқталғанда нәтиже <strong>Gulnar_18_93@mail.ru</strong> поштасына жіберіледі (FormSubmit).
+            Алғаш рет поштадағы растау хатын басыңыз.
+            <span lang="ru"
+              >После теста результат уходит на почту через FormSubmit. При первом письме подтвердите адрес в
+              письме от formsubmit.co.</span
+            >
+          </p>
+          <div id="teacher-history" class="teacher-history"></div>
+          <button type="button" class="btn-teacher-csv" id="btn-export-csv">
+            Барлық нәтижелерді CSV жүктеу
+            <span class="btn-inline-ru" lang="ru">Скачать все результаты (CSV)</span>
+          </button>
+        </div>
+      </details>
+    </section>
+
+    <!-- Тест -->
+    <section id="screen-test" class="screen" aria-labelledby="test-progress-label">
+      <span class="page-title" id="test-progress-label"
+        >Тест барысы<span class="title__ru" lang="ru">Ход теста</span></span
+      >
+      <div class="test-header-bar">
+        <div class="user-chip">
+          <div class="avatar" id="test-avatar" aria-hidden="true">?</div>
+          <div>
+            <div class="name" id="test-student-name">—</div>
+            <div class="meta" id="test-student-meta">—</div>
+          </div>
+        </div>
+        <div class="timer-pill" id="timer-display" role="timer" aria-live="polite">
+          <span aria-hidden="true">⏱</span>
+          <span id="timer-text">40:00</span>
+        </div>
+      </div>
+      <div class="progress-block">
+        <div class="progress-top">
+          <span id="progress-label">Сұрақ 1 / 30</span>
+          <span class="pct" id="progress-pct">3%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progress-fill" style="width: 3%"></div>
+        </div>
+      </div>
+      <article class="question-card">
+        <h2 class="question-text" id="question-text">
+          Сұрақ жүктелуде…<span class="question-load-ru" lang="ru">Вопрос загружается…</span>
+        </h2>
+        <div class="options-list" id="options-list" role="radiogroup" aria-labelledby="question-text"></div>
+        <div class="test-actions">
+          <button type="button" class="btn-next" id="btn-next" disabled>
+            <span id="btn-next-kk">Келесі сұрақ →</span>
+            <span id="btn-next-ru" class="btn-next-ru" lang="ru">Следующий вопрос</span>
+          </button>
+        </div>
+      </article>
+    </section>
+
+    <!-- Нәтиже -->
+    <section id="screen-results" class="screen" aria-labelledby="results-heading">
+      <span class="page-title"
+        >Тест нәтижесі<span class="title__ru" lang="ru">Результат теста</span></span
+      >
+      <div class="results-wrap">
+        <div class="results-card">
+          <div class="results-badge" aria-hidden="true">✓</div>
+          <h2 id="results-heading" class="h1-bilingual">
+            Тест аяқталды
+            <span class="h1__ru" lang="ru">Тест завершён</span>
+          </h2>
+          <p class="sub" id="results-sub">
+            Сіздің нәтижеңіз сақталды; мұғалім поштасына жіберу сұрауы жіберілді.
+            <span class="sub__ru" lang="ru"
+              >Результат сохранён в браузере; запрос на отправку преподавателю отправлен.</span
+            >
+          </p>
+          <p id="result-email-notice" class="result-email-notice" hidden role="status"></p>
+          <p class="score-big" id="result-score-pct">0%</p>
+          <p class="pass-label is-pass" id="result-pass-label">Өттіңіз</p>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <span class="num" id="stat-correct">0</span>
+              <span class="stat-lbl">
+                <span class="stat-lbl-kk">Дұрыс</span>
+                <span class="stat-lbl-ru" lang="ru">Верно</span>
+              </span>
+            </div>
+            <div class="stat-box">
+              <span class="num" id="stat-wrong">0</span>
+              <span class="stat-lbl">
+                <span class="stat-lbl-kk">Қате</span>
+                <span class="stat-lbl-ru" lang="ru">Неверно</span>
+              </span>
+            </div>
+            <div class="stat-box">
+              <span class="num" id="stat-total">30</span>
+              <span class="stat-lbl">
+                <span class="stat-lbl-kk">Барлығы</span>
+                <span class="stat-lbl-ru" lang="ru">Всего</span>
+              </span>
+            </div>
+            <div class="stat-box">
+              <span class="num" id="stat-time">0:00</span>
+              <span class="stat-lbl">
+                <span class="stat-lbl-kk">Уақыт</span>
+                <span class="stat-lbl-ru" lang="ru">Время</span>
+              </span>
+            </div>
+          </div>
+          <div class="result-user-bar">
+            <div class="avatar" id="result-avatar" aria-hidden="true">?</div>
+            <div>
+              <div class="name" id="result-name">—</div>
+              <div class="meta" id="result-meta">—</div>
+            </div>
+            <div class="side">
+              <div id="result-date">Күні: —</div>
+              <div id="result-clock">Уақыты: —</div>
+            </div>
+          </div>
+          <button type="button" class="btn-outline" id="btn-home">
+            Басты бетке оралу <span class="btn-outline-ru" lang="ru">На главную</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script src="data/questions.js" defer></script>
+    <script src="js/app.js" defer></script>
+  </body>
+</html>
